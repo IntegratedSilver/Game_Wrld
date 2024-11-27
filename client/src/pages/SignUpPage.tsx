@@ -71,7 +71,7 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+    
     if (!validateForm()) {
       return;
     }
@@ -79,19 +79,18 @@ export default function SignUpPage() {
     setIsLoading(true);
   
     try {
-
       const response = await authService.signup(formData);
       
       if (response.success) {
         toast.success('Account created successfully! Please sign in to continue.');
         navigate('/login');
       } else {
-
         setErrors({
           general: response.message || 'Failed to create account. Please try again.',
         });
       }
     } catch (error) {
+      console.error('Signup error:', error); 
       setErrors({
         general: 'An error occurred. Please try again later.',
       });
@@ -99,6 +98,7 @@ export default function SignUpPage() {
       setIsLoading(false);
     }
   };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -106,7 +106,7 @@ export default function SignUpPage() {
       ...prev,
       [name]: value
     }));
-    
+  
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
@@ -114,7 +114,16 @@ export default function SignUpPage() {
         [name]: undefined
       }));
     }
+  
+    // Clear general error when user starts typing in any field
+    if (errors.general) {
+      setErrors(prev => ({
+        ...prev,
+        general: undefined
+      }));
+    }
   };
+  
 
 
   return (
