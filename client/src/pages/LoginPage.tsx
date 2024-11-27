@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AlertCircle, Loader2, AtSign, User, EyeOff, Eye, Lock } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
 import { cn } from '../utils/styles';
 
 interface LoginForm {
@@ -18,7 +17,7 @@ interface FormErrors {
 }
 
 const LoginPage = () => {
-  const { login } = useAuth();
+
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -54,15 +53,6 @@ const LoginPage = () => {
 
     setIsLoading(true);
 
-    try {
-      await login(formData.identifier, formData.password);
-    } catch (error) {
-      setErrors({
-        general: 'Invalid email/username or password'
-      });
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
