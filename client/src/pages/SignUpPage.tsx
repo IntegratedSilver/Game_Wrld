@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Eye, EyeOff, AlertCircle, Loader2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { cn } from '../utils/styles';
+import { authService } from '../services/authService';
 
 interface SignUpForm {
   email: string;
@@ -70,25 +71,29 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+  
     if (!validateForm()) {
       return;
     }
-
+  
     setIsLoading(true);
-
+  
     try {
-      // Add signup API call here
-      // const response = await authService.signup(formData);
+
+      const response = await authService.signup(formData);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      toast.success('Account created successfully! Please sign in to continue.');
-      navigate('/login');
+      if (response.success) {
+        toast.success('Account created successfully! Please sign in to continue.');
+        navigate('/login');
+      } else {
+
+        setErrors({
+          general: response.message || 'Failed to create account. Please try again.',
+        });
+      }
     } catch (error) {
       setErrors({
-        general: 'Failed to create account. Please try again.'
+        general: 'An error occurred. Please try again later.',
       });
     } finally {
       setIsLoading(false);

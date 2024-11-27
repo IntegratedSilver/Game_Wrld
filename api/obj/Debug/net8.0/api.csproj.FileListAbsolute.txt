@@ -570,3 +570,4 @@ C:\Users\silve\Documents\Game_Wrld\api\obj\Debug\net8.0\refint\api.dll
 C:\Users\silve\Documents\Game_Wrld\api\obj\Debug\net8.0\api.pdb
 C:\Users\silve\Documents\Game_Wrld\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Users\silve\Documents\Game_Wrld\api\obj\Debug\net8.0\ref\api.dll
+C:\Users\silve\Documents\Game_Wrld\api\bin\Debug\net8.0\BCrypt.Net-Next.dll

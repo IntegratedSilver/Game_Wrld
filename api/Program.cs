@@ -20,9 +20,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("http://localhost:5173")  
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials(); 
     });
 });
 
@@ -44,5 +45,16 @@ app.UseCors("AllowLocalhost");
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == HttpMethod.Options.ToString())
+    {
+        context.Response.StatusCode = 200;
+        return;
+    }
+    await next();
+});
 
 app.Run();
