@@ -4463,11 +4463,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\silve\\Documents\\Game_Wrld\\api\\api.csproj",
+      "projectUniqueName": "C:\\Users\\silve\\Documents\\GameWrld\\wrld\\worldgame\\gamemain1\\gworldv2\\Game_Wrld\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\silve\\Documents\\Game_Wrld\\api\\api.csproj",
+      "projectPath": "C:\\Users\\silve\\Documents\\GameWrld\\wrld\\worldgame\\gamemain1\\gworldv2\\Game_Wrld\\api\\api.csproj",
       "packagesPath": "C:\\Users\\silve\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\silve\\Documents\\Game_Wrld\\api\\obj\\",
+      "outputPath": "C:\\Users\\silve\\Documents\\GameWrld\\wrld\\worldgame\\gamemain1\\gworldv2\\Game_Wrld\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\silve\\AppData\\Roaming\\NuGet\\NuGet.Config"
